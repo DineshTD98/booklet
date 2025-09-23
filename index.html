@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booklet</title>
+    <link rel="icon" href="assets/images/images.webp">
+    <link rel="stylesheet" href="css/style.css">
+   
+</head>
+<body>
+    <header>
+        <div class="navbar">
+
+              <h1>Booklet Game</h1>
+        </div>
+    </header>
+     <section>
+        <div class="maincontainer">
+        <div class="container" id="clsed">
+            <h1>The legend</h1>
+            <h3>MS DHONI</h3>
+            <p>MS Dhoni is a retired Indian international cricketer, known as a legendary former captain and wicket-keeper, who is celebrated for his exceptional leadership, especially his calm demeanor under pressure and his success in leading India to victories in the 2007 T20 World Cup, 2011 Cricket World Cup, and 2013 Champions Trophy. He is also famous for his big-hitting prowess and innovative shots, like the "helicopter shot," and is widely considered one of the greatest "finishers" in cricket history. </p>
+            <button type="button" onclick="closedbtn()">Delete</button>    
+        </div>
+        
+        </div>
+     </section>
+     <!--background blured colour for top of content-->
+     <div class="bgsection"></div>
+     <div class="content">
+          <h1>Booklet</h1>
+          
+          <form action="" onsubmit="addon(event)">
+           <div>
+           Book Name: <br><input type="text" placeholder="bookname" id="inp1">
+           </div> 
+            <div>
+            Player Name :<br> <input type="text" placeholder="playername" id="inp2">
+            </div>
+            <div>
+            Content:<br><textarea name="" id="textcontent" placeholder="description" cols="30" rows="7"></textarea>
+            </div>
+            <div>
+            <button type="submit">Add</button>
+            <button type="button" onclick="closingbtn()">Close</button>
+            </div>
+          </form>
+     </div>
+
+     <div class="btn">
+        <button type="button" id="openingbtn">+</button>
+     </div>
+
+
+     <script>
+          let openingbtn=document.getElementById('openingbtn');
+          let bgsection=document.querySelector('.bgsection');
+          let content=document.querySelector('.content');
+          openingbtn.addEventListener('click',()=>{
+               bgsection.style.display='block';
+               content.style.display='block';
+          })
+
+          function closingbtn(){
+             bgsection.style.display='none';
+               content.style.display='none';
+          }
+
+          let inp1=document.getElementById('inp1');
+          let inp2=document.getElementById('inp2');
+          let textcontent=document.getElementById('textcontent');
+          let maincontainer=document.querySelector('.maincontainer');
+          function addon(){
+            event.preventDefault();
+             let input1=inp1.value;
+             let input2=inp2.value;
+             let textcon=textcontent.value;
+             let div=document.createElement('div');
+             div.classList.add('container');
+             div.innerHTML=`<h1>${input1}</h1>
+              <h3>${input2}</h3> 
+              <p>${textcon}</p>
+               <button type="button" 
+               class='clsebtn'>delete</button>`;
+
+               if(input1==''){
+                   alert('please fill all the fields')
+                   return;
+               }
+               else if(input2==''){
+                   alert('please fill all the fields')
+                   return;
+               }
+                else if(textcon==''){
+                   alert('please fill all the fields')
+                   return;
+               }
+               
+               
+               maincontainer.appendChild(div);
+
+               //remove button
+                div.querySelector('.clsebtn').addEventListener('click',()=>{
+                    div.remove();
+                })
+                
+               
+
+               inp1.value='';
+               inp2.value='';
+               textcontent.value='';
+               
+            }
+           let clsed=document.getElementById('clsed');
+            function closedbtn(){
+                clsed.remove();
+            }
+
+     </script>
+</body>
+</html>
