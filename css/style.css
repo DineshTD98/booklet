@@ -8,6 +8,7 @@
 }
         .maincontainer{
             display: flex;
+            flex-wrap: wrap;
             justify-content:left;
             align-items:top;
             padding: 30px;
@@ -18,6 +19,10 @@
             border: 2px solid black;
             padding: 20px;
             margin: 10px;
+            transition: ease-in-out 0.2s all;
+        }
+        .container:hover{
+            transform: scale(1.02);
         }
         .bgsection{
             position: absolute;
